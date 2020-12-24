@@ -194,11 +194,12 @@ st.write("Sure, the batsmen send a few out of the park in Powerplay overs but th
 
 st.header("It is now time to **Finish it off in Style ** ;)")
 
+st.write("The following graph plots the total number of runs scored by MS Dhoni in *just* boundaries alone in each over.")
 # Dhoni and his boundaries
 over_boundaries = deliveries_boundaries.groupby(['match_id', 'innings', 'batting_team', 'bowling_team', 'over', 'striker', 'bowler']).agg(np.sum).reset_index()
 MSD = over_boundaries[over_boundaries['striker'] == 'MS Dhoni'].groupby('over').agg(np.sum).reset_index()
 
-fig = sns.catplot(data=MSD, kind='bar', x='over', y='batsman_runs', order=overs, aspect=1.75)
+fig = sns.catplot(data=MSD, kind='bar', x='over', y='batsman_runs', order=overs, aspect=1.75, color='yellow')
 fig.set_xticklabels(rotation=30, horizontalalignment='right')
 fig.set(ylabel='Total Runs scored by MSD in Boundaries', xlabel='Over')
 st.pyplot(fig)
@@ -206,8 +207,6 @@ st.pyplot(fig)
 st.write("This graph shows why MSD is considered to be one of the most dangerous Finishers."
          "The increase in the number of runs he scores in boundaries towards the end of the innings is *almost*"
          " exponential!"
-         " As an opponent you just do not want MSD at the crease during the final overs."
-         "This chart is a pictorial represntation of the words - 'MSD takes it deep and backs"
-         " himself to go massive at the end.'")
+         " As an opponent you just do not want MSD at the crease during the final overs." )
 
 st.write("** ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ **")
