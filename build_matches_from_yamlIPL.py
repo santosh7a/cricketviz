@@ -7,10 +7,9 @@ import os
 pd.set_option('display.max_rows', 250)
 pd.set_option('display.max_columns', 25)
 
-# update this directory as necessary
 os.chdir(r"ipl")
 
-# Uncomment only when you want to update files
+
 filenames = []
 yamlipl = []
 
@@ -31,6 +30,7 @@ sanmatchesraw = sanmatchesraw[['dates', 'city', 'venue', 'teams', 'toss.winner',
                                'outcome.by.runs', 'outcome.by.wickets', 'player_of_match',
                                'outcome.eliminator', 'outcome.result', 'outcome.method']]
 
+# Correcting the dates column
 ldates = []
 for lists in sanmatchesraw['dates']:
     if len(lists) == 1:
@@ -46,38 +46,6 @@ for lists in sanmatchesraw['dates']:
         else:
             ldates.append(lists[0])
 
-# the following spoonfed corrections will be deleted if above date checking block works out
-# sanmatchesraw.loc[4,'dates']  =[[datetime.date(2017, 4,  8)]]
-# sanmatchesraw.loc[56,'dates'] =[[datetime.date(2017, 5, 17)]]
-# sanmatchesraw.loc[241,'dates']=[[datetime.date(2008, 4, 19)]]
-# sanmatchesraw.loc[499,'dates']=[[datetime.date(2012, 4, 12)]]
-# sanmatchesraw.loc[693,'dates']=[[datetime.date(2014, 5, 28)]]
-
-# list1=[]
-# for row in sanmatchesraw.loc[59:238,'dates']:
-#    for entry in row:
-#        list1.append(entry)
-# list2=pd.Series(list1).apply(pd.to_datetime)
-# list3=[]
-# for i in list2:
-#    list3.append(i.date())
-
-# sanmatchesraw['date']=sanmatchesraw['dates']
-# sanmatchesraw.loc[59:238,'date']=list3
-
-# list4=[]
-# for row in sanmatchesraw.loc[0:58,'date']:
-#    for element in row:
-#        list4.append(element)
-
-# for row in sanmatchesraw.loc[59:238,'date']:
-#    list4.append(row)
-
-# for row in sanmatchesraw.loc[239:815,'date']:
-#    for element in row:
-#        list4.append(element)
-
-# sanmatchesraw['date']=list4
 
 
 sanmatchesraw['date'] = ldates
@@ -158,6 +126,6 @@ sanmatches.replace(['DC'], ['SRH'], inplace=True)
 sanmatches.replace(['DD'], ['DC'], inplace=True)
 sanmatches.replace(['Delhi Capitals'], ['DC', ], inplace=True)
 
-# uncomment WHEN NECESSARY
-os.chdir(r"C:\Users\santosh\PycharmProjects\Cricket")
-sanmatches.to_csv('IPL_matches.csv', index=False)
+# uncomment when necessary
+# os.chdir(r"C:\Users\santosh\PycharmProjects\Cricket")
+# sanmatches.to_csv('IPL_matches.csv', index=False)

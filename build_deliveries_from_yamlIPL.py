@@ -11,6 +11,7 @@ os.chdir(r"ipl")
 yamldeliveries = []
 filenames = []
 
+# iterating through match files in the directory and loading them.
 for file in os.listdir():
     with open(file, 'r') as f:
         filenames.append(str(file))
@@ -111,6 +112,23 @@ innings = innings[['match_id', 'innings', 'batting_team', 'bowling_team', 'deliv
                    'byes', 'penalty', 'non_boundary', 'batsman_runs', 'extra_runs',
                    'total_runs', 'wicket', 'player_out', 'kind_of_dismissal', 'fielders']]
 
-# UNCOMMENT WHEN NECESSARY
-os.chdir(r"C:\Users\santosh\PycharmProjects\Cricket")
-innings.to_csv('IPL_deliveries.csv', index=False)
+
+innings['delivery'] = innings['delivery'].astype(str)
+over_rework = innings['delivery'].str.split('.', expand=True)
+over_rework.rename(columns={0: 'over', 1: 'delivery'}, inplace=True)
+replace_values = {'0': 'first', '10': 'eleventh', '1': 'second', '11': 'twelfth', '2': 'third',
+                  '12': 'thirteenth', '3': 'fourth', '13': 'fourteenth', '4': 'fifth', '14': 'fifteenth',
+                  '5': 'sixth', '15': 'sixteenth', '6': 'seventh', '16': 'seventeenth', '7': 'eighth',
+                  '17': 'eighteenth', '8': 'ninth', '18': 'nineteenth', '9': 'tenth', '19': 'twentieth'}
+over_rework['over'] = over_rework['over'].replace(replace_values)
+innings.drop('delivery', axis=1, inplace=True)
+innings = pd.concat([innings, over_rework], axis=1)
+innings = innings[['match_id', 'innings', 'batting_team', 'bowling_team',
+                   'over', 'delivery', 'striker', 'bowler', 'non_striker',
+                   'wides', 'legbyes', 'noballs', 'byes', 'penalty', 'non_boundary',
+                   'batsman_runs', 'extra_runs', 'total_runs', 'wicket', 'player_out',
+                   'kind_of_dismissal', 'fielders']]
+
+# Uncomment the following when necessary
+# os.chdir(r"C:\Users\santosh\PycharmProjects\Cricket")
+# innings.to_csv('IPL_deliveries.csv', index=False)

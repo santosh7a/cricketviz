@@ -68,7 +68,7 @@ match_id,season,date,city,venue,teams,team_1,team_2,toss_winner,toss_decision,wi
 304,2009,2009-04-23,Durban,Kingsmead,"['Chennai Super Kings', 'Delhi Daredevils']",CSK,DC,DC,bat,DC,9.0,,['AB de Villiers'],0,0
 306,2009,2009-04-24,Durban,Kingsmead,"['Royal Challengers Bangalore', 'Kings XI Punjab']",RCB,KXIP,RCB,bat,KXIP,,7.0,['RS Bopara'],0,0
 307,2009,2009-04-25,Durban,Kingsmead,"['Deccan Chargers', 'Mumbai Indians']",SRH,MI,SRH,bat,SRH,12.0,,['PP Ojha'],0,0
-308,2009,2009-04-26,Port Elizabeth,St George's Park,"['Royal Challengers Bangalore', 'Delhi Daredevils']",RCB,DC,RCB,bat,DC,,6.0,['TM Dilshan'],0,0
+308,2009,2009-04-26,Port Elizabeth, St George's Park,"['Royal Challengers Bangalore', 'Delhi Daredevils']",RCB,DC,RCB,bat,DC,,6.0,['TM Dilshan'],0,0
 309,2009,2009-04-26,Cape Town,Newlands,"['Kings XI Punjab', 'Rajasthan Royals']",KXIP,RR,KXIP,bat,KXIP,27.0,,['KC Sangakkara'],0,0
 310,2009,2009-04-27,Durban,Kingsmead,"['Chennai Super Kings', 'Deccan Chargers']",CSK,SRH,SRH,field,SRH,,6.0,['HH Gibbs'],0,0
 311,2009,2009-04-27,Port Elizabeth,St George's Park,"['Kolkata Knight Riders', 'Mumbai Indians']",KKR,MI,MI,bat,MI,92.0,,['SR Tendulkar'],0,0
