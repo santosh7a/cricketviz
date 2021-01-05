@@ -12,12 +12,12 @@ sns.set_context("talk")
 # os.chdir(r'C:\Users\santosh\PycharmProjects\Cricket')
 
 # Importing the datasets
-matches = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matches.csv')
-deliveries_including_superovers = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_deliveries.csv')
+matches = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matches.csv', sep=",")
+deliveries_including_superovers = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_deliveries.csv', sep=",")
 deliveries = deliveries_including_superovers[(deliveries_including_superovers['innings'] == '1st innings')
                                              | (deliveries_including_superovers['innings'] == '2nd innings')]
-match_points = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matchwise_player_points.csv')
-dreamteams = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_historical_dreamteams.csv')
+match_points = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matchwise_player_points.csv', sep=",")
+dreamteams = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_historical_dreamteams.csv', sep=",")
 
 # Building a dataframe to get innings total runs and wickets i.e score cards
 matchscores = deliveries.groupby(['match_id', 'innings', 'batting_team', 'bowling_team']).agg(np.sum)
