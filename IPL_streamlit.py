@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
+# import os
 
 sns.set_style(style='darkgrid')
 sns.set_context("talk")
@@ -12,12 +12,12 @@ sns.set_context("talk")
 # os.chdir(r'C:\Users\santosh\PycharmProjects\Cricket')
 
 # Importing the datasets
-matches = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matches.csv', sep=",")
-deliveries_including_superovers = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_deliveries.csv', sep=",")
+matches = pd.read_csv('IPL_matches.csv')
+deliveries_including_superovers = pd.read_csv('IPL_deliveries.csv')
 deliveries = deliveries_including_superovers[(deliveries_including_superovers['innings'] == '1st innings')
                                              | (deliveries_including_superovers['innings'] == '2nd innings')]
-match_points = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_matchwise_player_points.csv', sep=",")
-dreamteams = pd.read_csv('https://github.com/santosh7a/cricketviz/blob/master/IPL_historical_dreamteams.csv', sep=",")
+match_points = pd.read_csv('IPL_matchwise_player_points.csv')
+dreamteams = pd.read_csv('IPL_historical_dreamteams.csv')
 
 # Building a dataframe to get innings total runs and wickets i.e score cards
 matchscores = deliveries.groupby(['match_id', 'innings', 'batting_team', 'bowling_team']).agg(np.sum)
@@ -207,6 +207,6 @@ st.pyplot(fig)
 st.write("This graph shows why MSD is considered to be one of the most dangerous Finishers."
          "The increase in the number of runs he scores in boundaries towards the end of the innings is *almost*"
          " exponential!"
-         " As an opponent you just do not want MSD at the crease during the final overs." )
+         " As an opponent you just do not want MSD at the crease during the final overs.")
 
 st.write("** ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ **")
